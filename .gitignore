@@ -1,0 +1,5 @@
+.DS_Store
+rss/
+.idea
+logs/*.log
+
