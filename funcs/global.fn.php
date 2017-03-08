@@ -52,7 +52,7 @@ function gethtml($url,$json=null,$code='UTF-8'){
 /**
  * 自定义抛出日志格式
  *
- * @author chunze.huang
+ * @author boxcore
  * @date   2015-01-31
  * @param  string     $str
  * @return string
