@@ -31,8 +31,10 @@ function gethtml($url,$json=null,$code='UTF-8'){
         $options[CURLOPT_HTTPHEADER] = array('CLIENT-IP:'.$args["ip"],'X-FORWARDED-FOR:'.$args["ip"]);
     }
     if (preg_match('/^https/',$url)){
-        $options[CURLOPT_SSL_VERIFYHOST] = 1;
+        $options[CURLOPT_SSL_VERIFYHOST] = 2; // fixed php 5.4+ problem
         $options[CURLOPT_SSL_VERIFYPEER] = 0;
+        //$options[CURLOPT_SSLVERSION] = 3;
+        //curl_setopt($ch, CURLOPT_SSLVERSION, 3);
     }
     curl_setopt_array($ch, $options);
     $data = curl_exec($ch);
@@ -43,6 +45,7 @@ function gethtml($url,$json=null,$code='UTF-8'){
     $curl_errno = curl_errno($ch);
     curl_close($ch);
     if($curl_errno>0){
+        var_dump($curl_errno);
         return 'error';
     }else{
         return $data;
