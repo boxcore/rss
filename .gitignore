@@ -2,4 +2,6 @@
 rss/
 .idea
 logs/*.log
+.sftp-config.json
+sftp-config.json
 
