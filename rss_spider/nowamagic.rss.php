@@ -45,11 +45,13 @@ if(!empty($rs[1])){
 
         phpQuery::newDocument($url_html);
         $content = pq('.post_content')->html();
-        $title = pq('h1 a')->html();
+        $title = pq('#content_area h1 a')->html();
         $content = trim($content);
 
         if($content){
             $rss.='<item><title>'.$title.'</title><link><![CDATA['.$url.']]></link><description><![CDATA['.$content.']]></description></item>';
+            throw_log("获取文章成功！标题： $title");
+
         }else{
             throw_log("获取文章异常！地址： $url");
         }
